@@ -24,30 +24,30 @@
         }
 
         .container {
-            border: 2px solid white;
             background: white;
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 700px;
+            max-width: 400px;
             transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .dark-mode .container {
             background: #2a2a2a;
-            border-color: #3a3a3a;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
         }
 
         h2 {
             text-align: center;
             margin-bottom: 1.5rem;
+            font-size: 1.5rem;
         }
 
         label {
             display: block;
             margin-bottom: 0.5rem;
+            font-size: 0.9rem;
         }
 
         input[type="email"] {
@@ -57,6 +57,7 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             box-sizing: border-box;
+            font-size: 1rem;
             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
@@ -68,7 +69,7 @@
 
         .reset-button {
             width: 100%;
-            padding: 0.65rem;
+            padding: 0.75rem;
             background-color: rgb(255, 10, 10);
             color: white;
             border: none;
@@ -93,14 +94,14 @@
 
         .theme-toggle {
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: 10px;
+            right: 10px;
             background-color: #4CAF50;
             color: white;
             border: none;
             border-radius: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
+            padding: 8px 16px;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
@@ -118,60 +119,52 @@
             background-color: #f39c12;
         }
 
-        @media (max-width: 480px) {
+        @media (min-width: 600px) {
             .container {
-                padding: 1rem;
+                padding: 2rem;
+                max-width: 500px;
             }
 
             h2 {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
+            }
+
+            label {
+                font-size: 1rem;
             }
 
             input[type="email"],
             .reset-button {
-                font-size: 1rem;
-                padding: 0.6rem;
+                font-size: 1.1rem;
             }
 
             .theme-toggle {
-                font-size: 14px;
-                padding: 8px 16px;
+                top: 20px;
+                right: 20px;
+                padding: 10px 20px;
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <button class="theme-toggle" onclick="toggleTheme()"><b>Dark Mode</b></button>
+    <button class="theme-toggle" onclick="toggleTheme()">Dark Mode</button>
     <div class="container">
         <h2>Forgot Password</h2>
         <form id="resetPasswordForm">
             <label for="email">Enter your email:</label>
             <input type="email" id="email" name="email" required>
-            <a href="confirm.html" class="reset-button">Reset Password</a>
+            <a href="https://adityasharma0903.github.io/confirm/" class="reset-button">Reset Password</a>
         </form>
         <div id="emailDisplay" style="margin-top: 10px;"></div>
     </div>
-    <iframe src="https://adityasharma0903.github.io/chatbot/" style="border: none; position: fixed; bottom: 0; right: 0; width: 380px; height: 600px; z-index: 1000;" id="chatbot-frame"></iframe>
     <script>
         function toggleTheme() {
             document.body.classList.toggle('dark-mode');
             const themeToggle = document.querySelector('.theme-toggle');
-            if (document.body.classList.contains('dark-mode')) {
-                themeToggle.textContent = 'Light Mode';
-            } else {
-                themeToggle.textContent = 'Dark Mode';
-            }
+            themeToggle.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
         }
-
-        window.addEventListener('message', function(event) {
-            if (event.data === 'chatbotOpened') {
-                document.getElementById('chatbot-frame').style.width = '380px';
-                document.getElementById('chatbot-frame').style.height = '600px';
-            } else if (event.data === 'chatbotClosed') {
-                document.getElementById('chatbot-frame').style.width = '100px';
-                document.getElementById('chatbot-frame').style.height = '100px';
-            }
-        }, false);
     </script>
 </body>
 </html>
+
